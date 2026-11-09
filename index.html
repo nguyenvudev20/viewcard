@@ -3,75 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#e8a6b9">
+<meta name="theme-color" content="#eaa0b7">
 <title>Happy Birthday Ms. Kayla</title>
-<link rel="preload" as="image" href="assets/kayla-birthday.jpg">
 <style>
-:root{color-scheme:light}
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden}
-body{font-family:Arial,"Segoe UI",Tahoma,sans-serif;background:#e7a7bb}
-.stage{position:relative;width:100vw;height:100vh;height:100dvh;overflow:hidden;isolation:isolate;background:#e8a6b9}
-/* Only the original artwork contains visible greeting text. No duplicate HTML text. */
-.backdrop{position:absolute;inset:-8%;z-index:-3;background:url('assets/kayla-birthday.jpg') center center/cover no-repeat;filter:blur(58px) saturate(.88) brightness(.92);transform:scale(1.1)}
-.veil{position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(219,119,157,.35),rgba(255,217,216,.12) 40%,rgba(255,217,216,.12) 60%,rgba(219,119,157,.35))}
-.artwork{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
-.artwork img{display:block;max-width:100%;max-height:100%;width:auto;height:100%;object-fit:contain;filter:drop-shadow(0 0 24px rgba(123,47,82,.18));animation:appear 1.2s ease-out both}
-.ambient{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.star{position:absolute;width:var(--s);height:var(--s);opacity:0;animation:twinkle var(--d) ease-in-out var(--delay) infinite}
-.star:before,.star:after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(255,250,225,.85);border-radius:50%;box-shadow:0 0 12px 3px rgba(255,242,215,.42)}
-.star:before{width:2px;height:100%}.star:after{height:2px;width:100%}
-/* Buttons are deliberately subtle and fade almost completely after inactivity. */
-.controls{position:absolute;right:18px;bottom:18px;z-index:5;display:flex;gap:9px;opacity:.3;transition:opacity .4s ease}
-.controls:hover,.controls:focus-within{opacity:1}
-.controls button{font-family:Arial,"Segoe UI",Tahoma,sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.25);border-radius:40px;padding:9px 13px;background:rgba(99,39,67,.28);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);cursor:pointer}
-.controls button:hover,.controls button:focus-visible{background:rgba(99,39,67,.7);outline:1px solid rgba(255,255,255,.8);outline-offset:2px}
-body.idle .controls{opacity:.055}
-body.idle .controls:hover,body.idle .controls:focus-within{opacity:1}
-@keyframes appear{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:scale(1)}}
-@keyframes twinkle{0%,100%{opacity:0;transform:scale(.55)}50%{opacity:.7;transform:scale(1.05)}}
-@media(max-width:800px){.controls{right:8px;bottom:8px;gap:5px}.controls button{font-size:11px;padding:7px 9px}}
-@media(prefers-reduced-motion:reduce){.star,.artwork img{animation:none!important}.artwork img{opacity:1}}
+:root{color-scheme:light;--pink:#eaa0b7;--deep:#b34f70;--cream:#fffef7;--dark:#91405d}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{background:#e9a0b5;font-family:Arial,Helvetica,sans-serif;color:var(--cream)}
+.stage{position:relative;isolation:isolate;width:100vw;height:100vh;height:100dvh;overflow:hidden;background:radial-gradient(circle at 85% 5%,#ffccd9a8,transparent 40%),linear-gradient(125deg,#e6a1ba 0%,#f1acc0 52%,#f2b49e 100%)}
+.stage:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.26;background-image:radial-gradient(#fff 1.5px,transparent 2px);background-size:90px 90px;animation:twinkle 9s ease-in-out infinite alternate}
+.layout{display:grid;grid-template-columns:minmax(0,42%) minmax(0,58%);height:100%;position:relative;z-index:2;padding:4.5vh 5.1vw 5.5vh 6.2vw;gap:3vw;align-items:center}
+.portrait-area{position:relative;height:88%;display:flex;align-items:center;justify-content:center;min-height:0}
+.photo{position:relative;height:100%;width:min(100%,49vh);max-width:100%;background:#fff;padding:1.5vh;border:1px solid #fff;border-radius:5px;box-shadow:0 2.8vh 6vh #95465c60;transform:rotate(-3deg);animation:photo-in 1.4s cubic-bezier(.21,.72,.26,1) both}
+.photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 49%;border-radius:2px}
+.photo:after{content:"";position:absolute;inset:1.5vh;box-shadow:inset 0 0 28px #0000000b;pointer-events:none}
+.photo-tape{position:absolute;width:25%;height:4.3vh;background:#fff9d59c;left:39%;top:-1.6vh;transform:rotate(1deg);z-index:4}
+.ribbon{position:absolute;bottom:-2vh;left:50%;transform:translateX(-50%) rotate(2deg);background:#f18fa9;box-shadow:0 .8vh 1.4vh #9c4a6250;border:3px solid #ffe4eb;color:#8b3654;padding:1vh 2.3vw;font:700 clamp(17px,2.1vw,45px)/1.3 Georgia,'Times New Roman',serif;white-space:nowrap;letter-spacing:.17em;z-index:4}
+.content{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-width:0;height:100%;padding:3vh 1vw 2vh 0}
+.happy{font-family:Georgia,'Times New Roman',serif;font-size:clamp(65px,7.9vw,174px);font-weight:400;line-height:1.02;font-style:italic;letter-spacing:-.08em;text-shadow:0 .3vh .8vh #ba617325;margin:0 0 -1vh;transform:rotate(-3deg);white-space:nowrap;animation:slide-in 1s .1s both}
+.birthday{font-family:Impact,'Arial Narrow',Arial,sans-serif;font-weight:900;font-stretch:condensed;font-size:clamp(67px,8.6vw,188px);line-height:1.1;letter-spacing:.012em;color:#fffef6;text-shadow:0 .5vh 1.4vh #ba617326;margin:0;white-space:nowrap;animation:slide-in 1s .25s both}
+.rule{width:45%;height:2px;background:linear-gradient(90deg,transparent,#fff9,transparent);margin:3vh 0 2.4vh}
+.greeting{font-family:Georgia,'Times New Roman',serif;font-weight:700;color:#963c5f;font-size:clamp(19px,2.05vw,46px);line-height:1.46;letter-spacing:.015em;margin:0;max-width:100%;text-shadow:0 1px 0 #ffffff50;animation:slide-in 1s .5s both}
+.clouds{position:absolute;bottom:-7vh;left:-3vw;right:-3vw;height:14vh;z-index:3;pointer-events:none;background:radial-gradient(ellipse 9vw 8vh at 3% 38%,#fff 98%,transparent 101%),radial-gradient(ellipse 8vw 8vh at 15% 75%,#fff 98%,transparent 101%),radial-gradient(ellipse 11vw 8vh at 30% 58%,#fff 98%,transparent 101%),radial-gradient(ellipse 12vw 9vh at 49% 75%,#fff 98%,transparent 101%),radial-gradient(ellipse 9vw 8vh at 64% 55%,#fff 98%,transparent 101%),radial-gradient(ellipse 10vw 8vh at 82% 70%,#fff 98%,transparent 101%),radial-gradient(ellipse 10vw 10vh at 97% 42%,#fff 98%,transparent 101%)}
+.bunting{position:absolute;top:0;width:27vw;height:19vh;z-index:1;opacity:.85;pointer-events:none}.bunting.left{left:-1vw;transform:rotate(5deg)}.bunting.right{right:-1vw;transform:scaleX(-1) rotate(5deg)}.bunting svg{width:100%;height:100%}
+.balloon-cluster{position:absolute;z-index:1;bottom:3vh;width:15vw;height:35vh;opacity:.8;pointer-events:none}.balloon-cluster.left{left:-7vw}.balloon-cluster.right{right:-7vw;transform:scaleX(-1)}.balloon{position:absolute;width:6vw;height:11vh;border-radius:52% 52% 46% 46%;background:radial-gradient(circle at 30% 24%,#fff9,transparent 27%),linear-gradient(135deg,#fff5ef,#ce8296 60%,#a95470);box-shadow:inset -1vw -.8vh 1.5vw #974a5a33,0 .4vh 1vh #9d54633b;animation:float 5s ease-in-out infinite alternate}.balloon:nth-child(1){left:2vw;top:1vh}.balloon:nth-child(2){left:7vw;top:10vh;animation-delay:-1s;background:radial-gradient(circle at 30% 24%,#fff,transparent 28%),linear-gradient(135deg,#fff,#e7cbd1 60%,#bd8393)}.balloon:nth-child(3){left:0;top:15vh;animation-delay:-2.4s}.balloon:nth-child(4){left:8vw;top:23vh;animation-delay:-3s}
+.sparkle{position:absolute;z-index:1;pointer-events:none;width:2.5vw;aspect-ratio:1;background:radial-gradient(circle,#fff 0 7%,#fff8 10%,transparent 70%);filter:drop-shadow(0 0 .4vw #fff);animation:pulse 3s ease-in-out infinite alternate}.sparkle:after,.sparkle:before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fffd}.sparkle:before{width:100%;height:2px}.sparkle:after{height:100%;width:2px}.s1{left:9%;top:20%}.s2{right:9%;top:28%;animation-delay:-1s}.s3{right:20%;bottom:16%;animation-delay:-2s}.s4{left:45%;top:12%;animation-delay:-.7s;width:1.4vw}
+.controls{position:fixed;z-index:20;right:1vw;bottom:1.5vh;display:flex;gap:8px;opacity:.12;transition:opacity .35s}.controls:hover,.controls:focus-within,.controls.is-active{opacity:.9}.control{appearance:none;border:1px solid #ffffff70;background:#6f304657;color:#fff;border-radius:50%;width:41px;height:41px;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(4px)}.control svg{width:20px;height:20px}.control:focus-visible{outline:3px solid #fff}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.paused *{animation-play-state:paused!important}
+@keyframes float{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-2vh) rotate(4deg)}}@keyframes twinkle{to{opacity:.5;transform:translateX(12px)}}@keyframes pulse{from{opacity:.3;transform:scale(.6)}to{opacity:1;transform:scale(1.25)}}@keyframes photo-in{from{opacity:0;transform:translateY(4vh) rotate(-8deg) scale(.94)}to{opacity:1;transform:rotate(-3deg)}}@keyframes slide-in{from{opacity:0;transform:translateY(1.5vh)}to{opacity:1;transform:translateY(0)}}
+@media(max-aspect-ratio: 13/10){.layout{grid-template-columns:1fr;grid-template-rows:43% 57%;gap:0;padding:3vh 5vw 8vh}.portrait-area{height:100%;grid-row:2}.photo{width:min(65vw,32vh);padding:.8vh}.photo:after{inset:.8vh}.content{grid-row:1;padding:0}.happy{font-size:clamp(48px,12vw,115px)}.birthday{font-size:clamp(48px,12vw,115px)}.greeting{font-size:clamp(14px,3.2vw,31px);line-height:1.32}.rule{margin:1vh 0}.ribbon{font-size:clamp(13px,3vw,28px);padding:.5vh 2vw}.clouds{height:10vh}}
+@media(min-aspect-ratio: 2.15){.layout{padding-top:2vh;padding-bottom:4vh}.happy{font-size:6.8vw}.birthday{font-size:7.2vw}.greeting{font-size:1.75vw}.photo{width:min(100%,54vh)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<main class="stage" aria-label="Thiệp chúc mừng sinh nhật Ms. Kayla">
-  <div class="backdrop" aria-hidden="true"></div>
-  <div class="veil" aria-hidden="true"></div>
-  <div class="artwork"><img src="assets/kayla-birthday.jpg" alt="Thiệp Happy Birthday Ms. Kayla, giữ nguyên ảnh và toàn bộ lời chúc gốc" fetchpriority="high"></div>
-  <div class="ambient" id="ambient" aria-hidden="true"></div>
-  <div class="controls" aria-label="Điều khiển trình chiếu">
-    <button id="motion" type="button" aria-label="Tạm dừng hiệu ứng" title="Tạm dừng hiệu ứng (P)">⏸</button>
-    <button id="fullscreen" type="button" aria-label="Toàn màn hình" title="Toàn màn hình (F)">⛶</button>
-  </div>
+<main class="stage" id="stage" aria-label="Thiệp chúc mừng sinh nhật Ms. Kayla">
+<div class="bunting left" aria-hidden="true"><svg viewBox="0 0 480 200" preserveAspectRatio="none"><path d="M-20 150 Q200 170 330 -20" fill="none" stroke="#fff" stroke-width="3"/><path d="M35 162L80 174 66 118Z" fill="#f2659d"/><path d="M98 152L143 148 118 100Z" fill="#ffe6eb"/><path d="M160 128L204 115 163 66Z" fill="#d9719a"/><path d="M218 96L262 69 211 34Z" fill="#ffc0d1"/><path d="M274 51L312 19 264 -6Z" fill="#ea7ea2"/></svg></div>
+<div class="bunting right" aria-hidden="true"><svg viewBox="0 0 480 200" preserveAspectRatio="none"><path d="M-20 150 Q200 170 330 -20" fill="none" stroke="#fff" stroke-width="3"/><path d="M35 162L80 174 66 118Z" fill="#f2659d"/><path d="M98 152L143 148 118 100Z" fill="#ffe6eb"/><path d="M160 128L204 115 163 66Z" fill="#d9719a"/><path d="M218 96L262 69 211 34Z" fill="#ffc0d1"/><path d="M274 51L312 19 264 -6Z" fill="#ea7ea2"/></svg></div>
+<div class="balloon-cluster left" aria-hidden="true"><span class="balloon"></span><span class="balloon"></span><span class="balloon"></span><span class="balloon"></span></div>
+<div class="balloon-cluster right" aria-hidden="true"><span class="balloon"></span><span class="balloon"></span><span class="balloon"></span><span class="balloon"></span></div>
+<span class="sparkle s1" aria-hidden="true"></span><span class="sparkle s2" aria-hidden="true"></span><span class="sparkle s3" aria-hidden="true"></span><span class="sparkle s4" aria-hidden="true"></span>
+<div class="layout">
+  <div class="portrait-area"><div class="photo"><span class="photo-tape" aria-hidden="true"></span><img src="assets/ms-kayla.jpg" alt="Ảnh Ms. Kayla" /></div><div class="ribbon">MS. KAYLA</div></div>
+  <section class="content" aria-label="Lời chúc sinh nhật"><h1 class="happy">Happy</h1><div class="birthday">BIRTHDAY</div><div class="rule" aria-hidden="true"></div><p class="greeting">Kính chúc Sếp sinh nhật vui vẻ, luôn mạnh khỏe, hạnh phúc và thành công. Chúc Sếp tuổi mới thật nhiều năng lượng, gặt hái thêm nhiều thành tựu và tiếp tục dẫn dắt tập thể ngày càng phát triển vững mạnh.</p></section>
+</div>
+<div class="clouds" aria-hidden="true"></div>
 </main>
+<div class="controls" id="controls" aria-label="Điều khiển trình chiếu">
+ <button class="control" id="pauseBtn" type="button" aria-label="Tạm dừng hiệu ứng" title="Tạm dừng/tiếp tục (P)"><svg id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></button>
+ <button class="control" id="fullBtn" type="button" aria-label="Toàn màn hình" title="Toàn màn hình (F)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 4H4v4M16 4h4v4M4 16v4h4M20 16v4h-4"/></svg></button>
+</div>
 <script>
-(()=>{
-  'use strict';
-  const ambient=document.getElementById('ambient');
-  const motion=document.getElementById('motion');
-  const fullscreen=document.getElementById('fullscreen');
-  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let playing=!reduced;
-  // Sparkles remain outside the central card to avoid covering the original lettering.
-  for(let i=0;i<18;i++){
-    const el=document.createElement('i');el.className='star';
-    const left=i%2===0?Math.random()*13:87+Math.random()*13;
-    el.style.left=left+'%';el.style.top=(5+Math.random()*90)+'%';
-    el.style.setProperty('--s',(12+Math.random()*20)+'px');
-    el.style.setProperty('--d',(3.8+Math.random()*4)+'s');
-    el.style.setProperty('--delay',(-Math.random()*8)+'s');
-    ambient.appendChild(el);
-  }
-  function updateMotion(){ambient.querySelectorAll('.star').forEach(s=>s.style.animationPlayState=playing?'running':'paused');motion.textContent=playing?'⏸':'▶';motion.title=playing?'Tạm dừng hiệu ứng (P)':'Tiếp tục hiệu ứng (P)';motion.setAttribute('aria-label',motion.title)}
-  function updateFullscreen(){fullscreen.textContent=document.fullscreenElement?'⤢':'⛶';fullscreen.title=document.fullscreenElement?'Thoát toàn màn hình (F)':'Toàn màn hình (F)';fullscreen.setAttribute('aria-label',fullscreen.title)}
-  motion.addEventListener('click',()=>{playing=!playing;updateMotion()});
-  fullscreen.addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen()}catch(e){console.warn('Trình duyệt không hỗ trợ toàn màn hình',e)}});
-  document.addEventListener('fullscreenchange',updateFullscreen);
-  document.addEventListener('keydown',e=>{if(e.target instanceof HTMLElement&&['BUTTON','INPUT','TEXTAREA'].includes(e.target.tagName)&&e.key===' ')return;if(e.key.toLowerCase()==='f'){e.preventDefault();fullscreen.click()}else if(e.key.toLowerCase()==='p'){e.preventDefault();motion.click()}});
-  let timer;function wake(){document.body.classList.remove('idle');clearTimeout(timer);timer=setTimeout(()=>document.body.classList.add('idle'),2300)}
-  ['pointermove','pointerdown','keydown','touchstart'].forEach(evt=>window.addEventListener(evt,wake,{passive:true}));
-  updateMotion();updateFullscreen();wake();
+(()=>{'use strict';const root=document.documentElement,controls=document.getElementById('controls'),pauseBtn=document.getElementById('pauseBtn'),pauseIcon=document.getElementById('pauseIcon'),fullBtn=document.getElementById('fullBtn');let paused=false,hideTimer;
+function showControls(){controls.classList.add('is-active');clearTimeout(hideTimer);hideTimer=setTimeout(()=>controls.classList.remove('is-active'),2200)}
+function togglePause(){paused=!paused;root.classList.toggle('paused',paused);pauseBtn.setAttribute('aria-label',paused?'Tiếp tục hiệu ứng':'Tạm dừng hiệu ứng');pauseIcon.innerHTML=paused?'<path d="M8 5v14l11-7z"/>':'<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';showControls()}
+async function toggleFullscreen(){try{if(document.fullscreenElement){await document.exitFullscreen()}else{await document.documentElement.requestFullscreen()}}catch(e){console.warn('Trình duyệt không hỗ trợ toàn màn hình:',e)}showControls()}
+pauseBtn.addEventListener('click',togglePause);fullBtn.addEventListener('click',toggleFullscreen);document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey)return;if(e.key.toLowerCase()==='p')togglePause();else if(e.key.toLowerCase()==='f')toggleFullscreen()});document.addEventListener('pointermove',showControls,{passive:true});showControls();
 })();
 </script>
 </body>
