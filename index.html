@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#e8a6b9">
+<title>Happy Birthday Ms. Kayla</title>
+<link rel="preload" as="image" href="assets/kayla-birthday.jpg">
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Arial,"Segoe UI",Tahoma,sans-serif;background:#e7a7bb}
+.stage{position:relative;width:100vw;height:100vh;height:100dvh;overflow:hidden;isolation:isolate;background:#e8a6b9}
+/* Only the original artwork contains visible greeting text. No duplicate HTML text. */
+.backdrop{position:absolute;inset:-8%;z-index:-3;background:url('assets/kayla-birthday.jpg') center center/cover no-repeat;filter:blur(58px) saturate(.88) brightness(.92);transform:scale(1.1)}
+.veil{position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(219,119,157,.35),rgba(255,217,216,.12) 40%,rgba(255,217,216,.12) 60%,rgba(219,119,157,.35))}
+.artwork{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.artwork img{display:block;max-width:100%;max-height:100%;width:auto;height:100%;object-fit:contain;filter:drop-shadow(0 0 24px rgba(123,47,82,.18));animation:appear 1.2s ease-out both}
+.ambient{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.star{position:absolute;width:var(--s);height:var(--s);opacity:0;animation:twinkle var(--d) ease-in-out var(--delay) infinite}
+.star:before,.star:after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(255,250,225,.85);border-radius:50%;box-shadow:0 0 12px 3px rgba(255,242,215,.42)}
+.star:before{width:2px;height:100%}.star:after{height:2px;width:100%}
+/* Buttons are deliberately subtle and fade almost completely after inactivity. */
+.controls{position:absolute;right:18px;bottom:18px;z-index:5;display:flex;gap:9px;opacity:.3;transition:opacity .4s ease}
+.controls:hover,.controls:focus-within{opacity:1}
+.controls button{font-family:Arial,"Segoe UI",Tahoma,sans-serif;font-size:13px;font-weight:500;color:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.25);border-radius:40px;padding:9px 13px;background:rgba(99,39,67,.28);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);cursor:pointer}
+.controls button:hover,.controls button:focus-visible{background:rgba(99,39,67,.7);outline:1px solid rgba(255,255,255,.8);outline-offset:2px}
+body.idle .controls{opacity:.055}
+body.idle .controls:hover,body.idle .controls:focus-within{opacity:1}
+@keyframes appear{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:scale(1)}}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.55)}50%{opacity:.7;transform:scale(1.05)}}
+@media(max-width:800px){.controls{right:8px;bottom:8px;gap:5px}.controls button{font-size:11px;padding:7px 9px}}
+@media(prefers-reduced-motion:reduce){.star,.artwork img{animation:none!important}.artwork img{opacity:1}}
+</style>
+</head>
+<body>
+<main class="stage" aria-label="Thiệp chúc mừng sinh nhật Ms. Kayla">
+  <div class="backdrop" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="artwork"><img src="assets/kayla-birthday.jpg" alt="Thiệp Happy Birthday Ms. Kayla, giữ nguyên ảnh và toàn bộ lời chúc gốc" fetchpriority="high"></div>
+  <div class="ambient" id="ambient" aria-hidden="true"></div>
+  <div class="controls" aria-label="Điều khiển trình chiếu">
+    <button id="motion" type="button" aria-label="Tạm dừng hiệu ứng" title="Tạm dừng hiệu ứng (P)">⏸</button>
+    <button id="fullscreen" type="button" aria-label="Toàn màn hình" title="Toàn màn hình (F)">⛶</button>
+  </div>
+</main>
+<script>
+(()=>{
+  'use strict';
+  const ambient=document.getElementById('ambient');
+  const motion=document.getElementById('motion');
+  const fullscreen=document.getElementById('fullscreen');
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let playing=!reduced;
+  // Sparkles remain outside the central card to avoid covering the original lettering.
+  for(let i=0;i<18;i++){
+    const el=document.createElement('i');el.className='star';
+    const left=i%2===0?Math.random()*13:87+Math.random()*13;
+    el.style.left=left+'%';el.style.top=(5+Math.random()*90)+'%';
+    el.style.setProperty('--s',(12+Math.random()*20)+'px');
+    el.style.setProperty('--d',(3.8+Math.random()*4)+'s');
+    el.style.setProperty('--delay',(-Math.random()*8)+'s');
+    ambient.appendChild(el);
+  }
+  function updateMotion(){ambient.querySelectorAll('.star').forEach(s=>s.style.animationPlayState=playing?'running':'paused');motion.textContent=playing?'⏸':'▶';motion.title=playing?'Tạm dừng hiệu ứng (P)':'Tiếp tục hiệu ứng (P)';motion.setAttribute('aria-label',motion.title)}
+  function updateFullscreen(){fullscreen.textContent=document.fullscreenElement?'⤢':'⛶';fullscreen.title=document.fullscreenElement?'Thoát toàn màn hình (F)':'Toàn màn hình (F)';fullscreen.setAttribute('aria-label',fullscreen.title)}
+  motion.addEventListener('click',()=>{playing=!playing;updateMotion()});
+  fullscreen.addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen()}catch(e){console.warn('Trình duyệt không hỗ trợ toàn màn hình',e)}});
+  document.addEventListener('fullscreenchange',updateFullscreen);
+  document.addEventListener('keydown',e=>{if(e.target instanceof HTMLElement&&['BUTTON','INPUT','TEXTAREA'].includes(e.target.tagName)&&e.key===' ')return;if(e.key.toLowerCase()==='f'){e.preventDefault();fullscreen.click()}else if(e.key.toLowerCase()==='p'){e.preventDefault();motion.click()}});
+  let timer;function wake(){document.body.classList.remove('idle');clearTimeout(timer);timer=setTimeout(()=>document.body.classList.add('idle'),2300)}
+  ['pointermove','pointerdown','keydown','touchstart'].forEach(evt=>window.addEventListener(evt,wake,{passive:true}));
+  updateMotion();updateFullscreen();wake();
+})();
+</script>
+</body>
+</html>
