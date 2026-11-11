@@ -24,9 +24,41 @@
 .balloon-group{position:absolute;z-index:2;bottom:250px;width:160px;height:270px;pointer-events:none;animation:float 6s ease-in-out infinite}.balloon-group.bl{left:1px}.balloon-group.br{right:1px;transform:scaleX(-1);animation-delay:-3s}.balloon{position:absolute;width:78px;height:99px;border-radius:50% 50% 47% 47%;background:radial-gradient(ellipse at 28% 22%,#fff9,transparent 24%),linear-gradient(120deg,#c87d92,#f1cdd4 46%,#a7687e);box-shadow:inset -8px -10px 13px #9a5a6a3b,0 5px 11px #944a662d}.balloon:before{content:"";position:absolute;bottom:-7px;left:34px;border-left:6px solid transparent;border-right:6px solid transparent;border-top:10px solid #d6a0ac}.balloon:after{content:"";position:absolute;left:39px;top:98px;height:108px;border-left:2px solid #fff9;transform:rotate(9deg)}.balloon:nth-child(1){left:19px;top:0}.balloon:nth-child(2){left:80px;top:70px;background:radial-gradient(ellipse at 28% 22%,#fff9,transparent 24%),linear-gradient(120deg,#c4a7ae,#fff 48%,#b2a1a5)}.balloon:nth-child(3){left:0;top:105px;background:radial-gradient(ellipse at 28% 22%,#fff9,transparent 24%),linear-gradient(120deg,#da7794,#f7c6cf 48%,#b96880)}@keyframes float{50%{translate:0 -17px}}
 .controls{position:fixed;right:20px;bottom:15px;display:flex;gap:8px;z-index:50;opacity:.08;transition:opacity .3s}.controls:hover,.controls:focus-within{opacity:.95}.controls button{border:1px solid #fff8;color:#fff;background:#583d5599;backdrop-filter:blur(5px);width:42px;height:42px;border-radius:50%;font-size:20px;cursor:pointer}.controls button:focus-visible{outline:3px solid white}
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+.madison-logo {
+    position: fixed;
+    top: 22px;
+    left: 28px;
+    z-index: 9999;
+
+    width: clamp(135px, 11vw, 230px);
+    padding: 8px 12px;
+
+    background: rgba(255,255,255,0.92);
+    border-radius: 10px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.madison-logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
 </style>
 </head>
 <body>
+  
+<div class="madison-logo">
+    <img src="assets/logo_madison.jpg" alt="Madison Group">
+</div>
+
 <main id="stage" aria-label="Thiệp Happy Birthday Ms. Kayla">
   <svg class="bunting left" viewBox="0 0 660 225" aria-hidden="true"><path class="line" d="M-20 200 Q210 202 370 -100"/><polygon points="95,171 136,171 125,224"/><polygon points="145,148 187,140 187,192"/><polygon points="197,110 239,100 248,149"/><polygon points="244,57 283,44 298,96"/><polygon points="289,1 333,-5 348,45"/><path class="line" d="M40 -35 Q230 164 540 190"/><polygon points="175,76 204,104 163,132"/><polygon points="243,119 268,144 229,160"/><polygon points="324,153 353,173 312,191"/><polygon points="400,170 429,186 393,203"/></svg>
   <svg class="bunting right" viewBox="0 0 660 225" aria-hidden="true"><path class="line" d="M-20 200 Q210 202 370 -100"/><polygon points="95,171 136,171 125,224"/><polygon points="145,148 187,140 187,192"/><polygon points="197,110 239,100 248,149"/><polygon points="244,57 283,44 298,96"/><polygon points="289,1 333,-5 348,45"/><path class="line" d="M40 -35 Q230 164 540 190"/><polygon points="175,76 204,104 163,132"/><polygon points="243,119 268,144 229,160"/><polygon points="324,153 353,173 312,191"/><polygon points="400,170 429,186 393,203"/></svg>
